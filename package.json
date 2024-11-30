@@ -4,10 +4,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon dist/index.js",
-      "build": "tsc && copyfiles -u 1 public/**/* dist/ nodemon",
+    "start": "nodemon src/index.ts",
+    "build": "rimraf dist && tsc",
     "dev": "npm run build && npm run start"
   },
+  "pre-commit": [
+    "ts.check",
+    "build",
+    "add-build"
+],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -30,6 +35,8 @@
   "devDependencies": {
     "copyfiles": "^2.4.1",
     "nodemon": "^3.1.7",
+    "pre-commit": "^1.2.2",
+    "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
   }
