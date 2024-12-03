@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/index.js",
-    "build": "rimraf dist",
+    "build": "tsc --build",
     "dev": "npm run build && npm run start"
   },
  

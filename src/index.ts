@@ -37,6 +37,11 @@ interface ContentRequestBody {
   description: string;
 }
 
+
+app.get("/",async (req:Request,res:Response)=>{
+  res.send("Hi there");
+   
+})
 // Signup Route
 app.post("/Signup", async (req: Request<{}, {}, SignupRequestBody>, res: Response) => {
   const { user, password, email } = req.body;
