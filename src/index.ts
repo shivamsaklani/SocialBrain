@@ -12,6 +12,7 @@ import cors from "cors";
 dotenv.config();
 const secret = process.env.JWTSECRET as string;
 const port = Number(process.env.PORT || 3000);
+const baseurl=process.env.baseurl
 
 const app = express();
 app.use(express.json());
@@ -170,9 +171,9 @@ app.post("/content/share", authorization, async (req: Request, res: Response) =>
   } else {
     if (!link) {
       await LinkModel.create({ userId: _id, hash: hashlink });
-      returnlink = `http://localhost:3000/content/share/${hashlink}`;
+      returnlink = `${baseurl}/content/share/${hashlink}`;
     } else {
-      returnlink = `http://localhost:3000/content/share/${link.hash}`;
+      returnlink = `${baseurl}/content/share/${link.hash}`;
     }
   }
 
