@@ -40,7 +40,7 @@ interface ContentRequestBody {
 
 
 app.get("/",async (req:Request,res:Response)=>{
-  res.send("Hi there");
+  res.send("Server Working Fine");
    
 })
 // Signup Route
