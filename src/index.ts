@@ -171,9 +171,9 @@ app.post("/content/share", authorization, async (req: Request, res: Response) =>
   } else {
     if (!link) {
       await LinkModel.create({ userId: _id, hash: hashlink });
-      returnlink = `${baseurl}/content/share/${hashlink}`;
+      returnlink = `/content/share/${hashlink}`;
     } else {
-      returnlink = `${baseurl}/content/share/${link.hash}`;
+      returnlink = `/content/share/${link.hash}`;
     }
   }
 
