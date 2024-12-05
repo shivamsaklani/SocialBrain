@@ -187,7 +187,9 @@ app.get("/user/details/:id",authorization,async (req:Request,res:Response)=>{
   let status:number;
 
    try {
-     const response= await UserModel.findOne({_id:id},{password:0});
+    const Linkresposnse =await LinkModel.findOne({hash:id});
+  
+     const response= await UserModel.findOne({_id:Linkresposnse?.userId},{password:0});
      status = 200
      res.json({
        response,
