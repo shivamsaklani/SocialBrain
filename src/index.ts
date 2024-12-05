@@ -182,7 +182,7 @@ app.post("/content/share", authorization, async (req: Request, res: Response) =>
   res.json({ mesg, link: returnlink });
 });
 
-app.get("/user/details/:id",authorization,async (req:Request,res:Response)=>{
+app.get("/user/details/:id",async (req:Request,res:Response)=>{
   const {id} =req.params;
   let status:number;
 
