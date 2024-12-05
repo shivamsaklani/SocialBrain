@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express, { Request, response, Response } from "express";
 import jwt from "jsonwebtoken";
 import { UserModel, ContentModel, LinkModel } from "./Database";
 import dotenv from "dotenv";
@@ -172,13 +172,37 @@ app.post("/content/share", authorization, async (req: Request, res: Response) =>
     if (!link) {
       await LinkModel.create({ userId: _id, hash: hashlink });
       returnlink = `/content/share/${hashlink}`;
+      mesg="link created";
     } else {
       returnlink = `/content/share/${link.hash}`;
+      mesg="link exist";
     }
   }
 
   res.json({ mesg, link: returnlink });
 });
+
+app.get("/user/details/:id",authorization,async (req:Request,res:Response)=>{
+  const {id} =req.params;
+  let status:number;
+
+   try {
+     const response= await UserModel.findOne({_id:id},{password:0});
+     status = 200
+     res.json({
+       response,
+       status: status
+     })
+   } catch (e) {
+    status=504
+    res.json({
+      error:e,
+      status:status
+    })
+    
+   }
+ 
+})
 
 // Get Shared Content Route
 app.get("/content/share/:sharelink", async (req: Request, res: Response) => {
