@@ -12,7 +12,7 @@ import cors from "cors";
 dotenv.config();
 const secret = process.env.JWTSECRET as string;
 const port = Number(process.env.PORT || 3000);
-const baseurl=process.env.baseurl
+const baseurl=process.env.baseurl;
 
 const app = express();
 app.use(express.json());
