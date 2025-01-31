@@ -64,7 +64,7 @@ app.post("/Signup", async (req: Request<{}, {}, SignupRequestBody>, res: Respons
       status = 201; // Created
     } catch (error) {
       // Handle database or server errors
-      mesg = `Error: ${error}`;
+      mesg = `Try again`;
       status = 500; // Internal Server Error
     }
   }
@@ -97,7 +97,7 @@ app.post("/Signin", async (req: Request<{}, {}, SigninRequestBody>, res: Respons
         status = 401; // Unauthorized
       }
     } catch (error) {
-      mesg = `Server error: ${error}`;
+      mesg = `Try again!`;
       status = 500; // Internal Server Error
     }
   }
@@ -115,7 +115,7 @@ app.post("/content/put", authorization, async (req: Request<{}, {}, ContentReque
   try {
     await ContentModel.create({ title, tags, type, link, description, userId: _id });
   } catch (e) {
-    mesg = `Error occurred: ${e}`;
+    mesg = `Please Try again`;
     status = 500;
   }
 
@@ -145,7 +145,7 @@ app.delete("/content/delete", authorization, async (req: Request, res: Response)
       status = 201;
     }
   } catch (e) {
-    mesg = `Error: ${e}`;
+    mesg = `Please Try again`;
     status = 500;
   }
 

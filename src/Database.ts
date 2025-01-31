@@ -28,7 +28,7 @@ const contentSchema = new Schema({
 // Schema for User
 const userSchema = new Schema({
     email: { type: String, required: true, unique: true },
-    user: { type: String, required: true, unique: true },
+    user: { type: String, required: true},
     password: { type: String, required: true },
 });
 
